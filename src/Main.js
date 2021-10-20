@@ -12,10 +12,16 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MapIcon from "@mui/icons-material/Map";
+import Map from "./Map";
+import Favorites from "./Favorites";
 
 const drawerWidth = 240;
 
 export default function Main() {
+  function handleClick(text) {
+    debugger;
+  }
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -43,7 +49,7 @@ export default function Main() {
         <Divider />
         <List>
           {["Map", "<3", "Account", "Logout"].map((text, index) => (
-            <ListItem button key={text}>
+            <ListItem button key={text} onClick={() => handleClick(text)}>
               <ListItemIcon>
                 {index % 2 === 0 ? <MapIcon /> : <FavoriteIcon />}
               </ListItemIcon>
@@ -57,6 +63,7 @@ export default function Main() {
         sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
       >
         <Toolbar />
+        <Map />
       </Box>
     </Box>
   );
