@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -18,8 +18,12 @@ import Favorites from "./Favorites";
 const drawerWidth = 240;
 
 export default function Main() {
+  const [rendering, setRendering] = useState("map");
+
   function handleClick(text) {
-    debugger;
+    console.log(text);
+    // setCount(count + 1
+    //next!
   }
 
   return (
@@ -63,7 +67,7 @@ export default function Main() {
         sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
       >
         <Toolbar />
-        <Map />
+        {/* {index % 2 === 0 ? <Map /> : <Favorites />} */}
       </Box>
     </Box>
   );
