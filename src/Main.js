@@ -18,12 +18,10 @@ import Favorites from "./Favorites";
 const drawerWidth = 240;
 
 export default function Main() {
-  const [rendering, setRendering] = useState("map");
+  const [rendering, setRendering] = useState("Map");
 
   function handleClick(text) {
-    console.log(text);
-    // setCount(count + 1
-    //next!
+    setRendering(text);
   }
 
   return (
@@ -52,7 +50,7 @@ export default function Main() {
         <h1 className="app-name">Market Finder</h1>
         <Divider />
         <List>
-          {["Map", "<3", "Account", "Logout"].map((text, index) => (
+          {["Map", "Favorites", "Account", "Logout"].map((text, index) => (
             <ListItem button key={text} onClick={() => handleClick(text)}>
               <ListItemIcon>
                 {index % 2 === 0 ? <MapIcon /> : <FavoriteIcon />}
@@ -67,7 +65,7 @@ export default function Main() {
         sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
       >
         <Toolbar />
-        {/* {index % 2 === 0 ? <Map /> : <Favorites />} */}
+        {rendering === "Map" ? <Map /> : <Favorites />}
       </Box>
     </Box>
   );
