@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 function Map() {
-  //
   const [currentPosition, setCurrentPosition] = useState({});
 
   const mapStyles = {
@@ -28,17 +27,12 @@ function Map() {
     alert("Failed to get your location");
   }
 
-  const defaultCenter = {
-    lat: 41.3851,
-    lng: 2.1734,
-  };
-
   return (
     <LoadScript googleMapsApiKey="AIzaSyBx3CmMKzArhN9tC7vKM2HPi1UcoXm0mjo">
       <GoogleMap
         mapContainerStyle={mapStyles}
-        zoom={13}
-        center={defaultCenter}
+        zoom={11}
+        center={currentPosition}
       />
     </LoadScript>
   );
