@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import Usda from "./Usda";
 
 function Map() {
   const [currentPosition, setCurrentPosition] = useState({});
@@ -28,13 +29,16 @@ function Map() {
   }
 
   return (
-    <LoadScript googleMapsApiKey="AIzaSyBx3CmMKzArhN9tC7vKM2HPi1UcoXm0mjo">
-      <GoogleMap
-        mapContainerStyle={mapStyles}
-        zoom={11}
-        center={currentPosition}
-      />
-    </LoadScript>
+    <div>
+      <LoadScript googleMapsApiKey="AIzaSyBx3CmMKzArhN9tC7vKM2HPi1UcoXm0mjo">
+        <GoogleMap
+          mapContainerStyle={mapStyles}
+          zoom={11}
+          center={currentPosition}
+        />
+      </LoadScript>
+      <Usda />
+    </div>
   );
 }
 
