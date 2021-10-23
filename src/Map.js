@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
-import Usda from "./Usda";
+import Usda from "./Results";
 
 function Map() {
   const [currentPosition, setCurrentPosition] = useState({});
@@ -37,7 +37,6 @@ function Map() {
           center={currentPosition}
         />
       </LoadScript>
-      <Usda />
     </div>
   );
 }

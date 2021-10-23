@@ -12,7 +12,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MapIcon from "@mui/icons-material/Map";
-import Map from "./Map";
+import MapContainer from "./MapContainer";
 import Favorites from "./Favorites";
 
 const drawerWidth = 240;
@@ -65,7 +65,7 @@ export default function Main() {
         sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
       >
         <Toolbar />
-        {rendering === "Map" ? <Map /> : <Favorites />}
+        {rendering === "Map" ? <MapContainer /> : <Favorites />}
       </Box>
     </Box>
   );

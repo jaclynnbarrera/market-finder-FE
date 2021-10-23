@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Usda() {
+function Results() {
   const [marketResults, setMarketResults] = useState([]);
 
   useEffect(() => {
@@ -26,4 +26,4 @@ function Usda() {
   );
 }
 
-export default Usda;
+export default Results;
