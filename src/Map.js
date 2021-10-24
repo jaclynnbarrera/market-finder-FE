@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
-import Usda from "./Results";
 
 function Map() {
   const [currentPosition, setCurrentPosition] = useState({});
