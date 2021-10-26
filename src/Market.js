@@ -14,7 +14,7 @@ function Market(props) {
             <CardActionArea>
               <CardMedia
                 component="img"
-                height="140"
+                height="100"
                 image="/static/images/cards/contemplative-reptile.jpg"
                 alt="green iguana"
               />
@@ -23,8 +23,7 @@ function Market(props) {
                   {market.marketname.slice(4)}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
+                  {market.marketname.slice(0, 3)} Miles Away
                 </Typography>
               </CardContent>
             </CardActionArea>
