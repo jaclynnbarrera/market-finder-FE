@@ -8,7 +8,6 @@ import Grid from "@mui/material/Grid";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
-  padding: theme.spacing(1),
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
@@ -23,7 +22,7 @@ function MapContainer() {
           </Item>
         </Grid>
         <Grid item xs={4}>
-          <Item>
+          <Item style={{ maxHeight: "80vh", overflow: "auto" }}>
             <Results />
           </Item>
         </Grid>
