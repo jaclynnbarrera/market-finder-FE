@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -9,7 +9,7 @@ function Market(props) {
   return (
     <div>
       {props.markets.map((market) => (
-        <div className="market-card">
+        <div className="market-card" key={market.marketname}>
           <Card sx={{ maxWidth: 345 }}>
             <CardActionArea>
               <CardMedia
