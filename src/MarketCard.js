@@ -6,17 +6,17 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
 function MarketCard(props) {
-  debugger;
+  // debugger;
   return (
     <div>
-      {props.markets.map((market) => (
+      {props.markets.map((market, i) => (
         <div className="market-card" key={market.marketname}>
           <Card sx={{ maxWidth: 345 }}>
             <CardActionArea>
               <CardMedia
                 component="img"
                 height="100"
-                image="/static/images/cards/contemplative-reptile.jpg"
+                image={props.photos[i].urls.small}
                 alt="green iguana"
               />
               <CardContent>
