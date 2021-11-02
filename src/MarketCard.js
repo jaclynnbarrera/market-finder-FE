@@ -4,12 +4,11 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import UnsplashAPI from "./UnsplashAPI";
 
-function Market(props) {
+function MarketCard(props) {
+  debugger;
   return (
     <div>
-      <UnsplashAPI />
       {props.markets.map((market) => (
         <div className="market-card" key={market.marketname}>
           <Card sx={{ maxWidth: 345 }}>
@@ -36,4 +35,4 @@ function Market(props) {
   );
 }
 
-export default Market;
+export default MarketCard;

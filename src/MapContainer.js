@@ -1,6 +1,6 @@
 import React from "react";
 import Map from "./Map";
-import Results from "./Results";
+import MarketContainer from "./MarketContainer";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -23,7 +23,7 @@ function MapContainer() {
         </Grid>
         <Grid item xs={4}>
           <Item style={{ maxHeight: "80vh", overflow: "auto" }}>
-            <Results />
+            <MarketContainer />
           </Item>
         </Grid>
       </Grid>
