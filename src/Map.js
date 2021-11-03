@@ -1,8 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import Geocode from "react-geocode";
 
 function Map(props) {
   const [currentPosition, setCurrentPosition] = useState({});
+
+  Geocode.setApiKey("AIzaSyCZQ8bYF7Oi_opyWlt6UuOVmPpMbzNMlas");
+
+  // Geocode.fromAddress("Eiffel Tower").then(
+  //   (response) => {
+  //     const { lat, lng } = response.results[0].geometry.location;
+  //     console.log(lat, lng);
+  //   },
+  //   (error) => {
+  //     console.error(error);
+  //   }
+  // );
 
   const mapStyles = {
     height: "80vh",
