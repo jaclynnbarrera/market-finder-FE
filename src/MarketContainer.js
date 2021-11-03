@@ -6,33 +6,12 @@ const api = createApi({
   accessKey: "tYUP2yWTTGcJiNG3zBX7nkF7Iv2t-cmBbqUaqSMLI_g",
 });
 
-function MarketContainer() {
-  const [marketResults, setMarketResults] = useState([]);
+function MarketContainer(props) {
   const [data, setPhotosResp] = useState(null);
 
   useEffect(() => {
-    getMarkets();
     getPhotos();
   });
-
-  //REPLACE WITH COORDINATES FROM GEOLOCATOR
-  function getMarkets() {
-    const coordinates = {
-      lat: 40.8590831,
-      lng: -73.8537585,
-    };
-    //USDA API
-    fetch(
-      `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=${coordinates.lat}&lng=${coordinates.lng}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setMarketResults(data.results);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
   //UNSPLASH API CALL
   function getPhotos() {
@@ -53,7 +32,8 @@ function MarketContainer() {
 
   return (
     <div>
-      <MarketCard markets={marketResults} photos={data} />
+      <h3>{props.markets.length} Markets In Your Area</h3>
+      <MarketCard markets={props.markets} photos={data} />
     </div>
   );
 }

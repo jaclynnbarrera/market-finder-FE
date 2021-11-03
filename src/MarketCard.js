@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
 function MarketCard(props) {
-  // debugger;
   return (
     <div>
       {props.markets.map((market, i) => (
@@ -17,7 +16,7 @@ function MarketCard(props) {
                 component="img"
                 height="100"
                 image={props.photos[i].urls.small}
-                alt="green iguana"
+                alt="farmers market"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
