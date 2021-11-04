@@ -3,7 +3,7 @@ import MarketCard from "./MarketCard";
 import { createApi } from "unsplash-js";
 
 const api = createApi({
-  accessKey: "tYUP2yWTTGcJiNG3zBX7nkF7Iv2t-cmBbqUaqSMLI_g",
+  accessKey: process.env.REACT_APP_UNSPLASH_KEY,
 });
 
 function MarketContainer(props) {

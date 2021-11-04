@@ -5,7 +5,7 @@ import Geocode from "react-geocode";
 function Map(props) {
   const [currentPosition, setCurrentPosition] = useState({});
 
-  Geocode.setApiKey("AIzaSyCZQ8bYF7Oi_opyWlt6UuOVmPpMbzNMlas");
+  Geocode.setApiKey(process.env.REACT_APP_GEOCODE_KEY);
 
   // Geocode.fromAddress("Eiffel Tower").then(
   //   (response) => {
@@ -42,7 +42,7 @@ function Map(props) {
 
   return (
     <div>
-      <LoadScript googleMapsApiKey="AIzaSyBx3CmMKzArhN9tC7vKM2HPi1UcoXm0mjo">
+      <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLEMAPS_KEY}>
         <GoogleMap
           mapContainerStyle={mapStyles}
           zoom={11}
