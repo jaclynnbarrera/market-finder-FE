@@ -21,29 +21,34 @@ function MarketCard(props) {
       });
   });
 
+  function handleClick() {
+    console.log(details);
+  }
+
   return (
-    <div>
-      <div className="market-card" key={props.market.marketname}>
-        <p>{details.Products}</p>
-        <Card sx={{ maxWidth: 345 }}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="100"
-              image={props.photo.urls.regular}
-              alt="farmers market"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {props.market.marketname.slice(4)}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {props.market.marketname.slice(0, 3)} Miles Away
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      </div>
+    <div
+      className="market-card"
+      key={props.market.marketname}
+      onClick={handleClick}
+    >
+      <Card sx={{ maxWidth: 345 }}>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            height="100"
+            image={props.photo.urls.regular}
+            alt="farmers market"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {props.market.marketname.slice(4)}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {props.market.marketname.slice(0, 3)} Miles Away
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
     </div>
   );
 }

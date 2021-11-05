@@ -36,7 +36,7 @@ function MarketContainer(props) {
     <div>
       <h3>{props.markets.length} Markets In Your Area</h3>
       {props.markets.map((market, i) => (
-        <MarketCard market={market} photo={data[i]} />
+        <MarketCard market={market} photo={data[i]} key={i} />
       ))}
     </div>
   );
