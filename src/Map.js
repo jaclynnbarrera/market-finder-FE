@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import Geocode from "react-geocode";
 
-function Map(props) {
+function Map() {
   const [currentPosition, setCurrentPosition] = useState({});
-
   Geocode.setApiKey(process.env.REACT_APP_GEOCODE_KEY);
-
   // Geocode.fromAddress("Eiffel Tower").then(
   //   (response) => {
   //     const { lat, lng } = response.results[0].geometry.location;

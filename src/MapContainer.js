@@ -30,36 +30,18 @@ function MapContainer() {
     )
       .then((response) => response.json())
       .then((data) => {
-        // setMarketResults(data.results);
-        getMarketDetails(data.results);
+        setMarketResults(data.results);
       })
       .catch((err) => {
         console.log(err);
       });
-  }
-
-  function getMarketDetails(markets) {
-    //iterate through each market
-    //fetch details for the markets
-    //add those details to market object with new address key
-    const marketDetails = markets.map((market) => {
-      fetch(
-        `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=${market.id}`
-      )
-        .then((r) => r.json())
-        .then((data) => {
-          market.info = data.marketdetails;
-        });
-      return market;
-    });
-    setMarketResults(marketDetails);
   }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2} columns={12}>
         <Grid item xs={8}>
           <Item>
-            <Map markers={marketResults} />
+            <Map />
           </Item>
         </Grid>
         <Grid item xs={4}>

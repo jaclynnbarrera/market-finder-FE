@@ -7,13 +7,13 @@ const api = createApi({
 });
 
 function MarketContainer(props) {
-  const [data, setPhotosResp] = useState(null);
-
+  //all markets
   useEffect(() => {
     getPhotos();
+    getDetails();
   });
 
-  //UNSPLASH API CALL
+  const [data, setPhotosResp] = useState(null);
   function getPhotos() {
     api.search
       .getPhotos({
@@ -30,10 +30,14 @@ function MarketContainer(props) {
       });
   }
 
+  function getDetails() {}
+
   return (
     <div>
       <h3>{props.markets.length} Markets In Your Area</h3>
-      <MarketCard markets={props.markets} photos={data} />
+      {props.markets.map((market, i) => (
+        <MarketCard market={market} photo={data[i]} />
+      ))}
     </div>
   );
 }
