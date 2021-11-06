@@ -7,7 +7,6 @@ const api = createApi({
 });
 
 function MarketContainer(props) {
-  //all markets
   useEffect(() => {
     getPhotos();
     getDetails();
