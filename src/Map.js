@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
-function Map() {
+function Map(props) {
   const [currentPosition, setCurrentPosition] = useState({});
 
   const mapStyles = {

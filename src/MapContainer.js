@@ -20,19 +20,19 @@ function MapContainer() {
     getMarkets();
   }, []);
 
-  const [markets, setMarkers] = useState([]);
+  const [markers, setMarkers] = useState([]);
 
-  const pullData = (marketInfo) => {
-    // Geocode.setApiKey(process.env.REACT_APP_GEOCODE_KEY);
-    // Geocode.fromAddress(marketInfo.Address).then(
-    //   (response) => {
-    //     const { lat, lng } = response.results[0].geometry.location;
-    //     console.log(lat, lng);
-    //   },
-    //   (error) => {
-    //     console.error(error);
-    //   }
-    // );
+  const pullData = (marketDetails) => {
+    Geocode.setApiKey(process.env.REACT_APP_GEOCODE_KEY);
+    Geocode.fromAddress(marketDetails.Address).then(
+      (response) => {
+        const { lat, lng } = response.results[0].geometry.location;
+        setMarkers((oldArray) => [...oldArray, { lat: lat, lng: lng }]);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   };
 
   function getMarkets() {
@@ -57,7 +57,7 @@ function MapContainer() {
       <Grid container spacing={2} columns={12}>
         <Grid item xs={8}>
           <Item>
-            <Map />
+            <Map markers={markers} />
           </Item>
         </Grid>
         <Grid item xs={4}>

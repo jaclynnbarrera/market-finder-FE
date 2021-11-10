@@ -15,11 +15,12 @@ function MarketCard(props) {
       .then((resp) => resp.json())
       .then((data) => {
         setDetails(data.marketdetails);
+        props.func(data.marketdetails);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [props.market.id]);
+  }, [props]);
 
   function handleClick() {
     console.log(details);

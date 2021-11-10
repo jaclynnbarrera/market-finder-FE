@@ -9,7 +9,6 @@ const api = createApi({
 function MarketContainer(props) {
   useEffect(() => {
     getPhotos();
-    getDetails(props.markets);
   }, [props.markets]);
 
   const [data, setPhotosResp] = useState(null);
@@ -27,10 +26,6 @@ function MarketContainer(props) {
       .catch(() => {
         console.log("something went wrong!");
       });
-  }
-
-  function getDetails(markets) {
-    console.log(markets);
   }
 
   return (
