@@ -9,8 +9,8 @@ const api = createApi({
 function MarketContainer(props) {
   useEffect(() => {
     getPhotos();
-    getDetails();
-  });
+    getDetails(props.markets);
+  }, [props.markets]);
 
   const [data, setPhotosResp] = useState(null);
   function getPhotos() {
@@ -29,13 +29,15 @@ function MarketContainer(props) {
       });
   }
 
-  function getDetails() {}
+  function getDetails(markets) {
+    console.log(markets);
+  }
 
   return (
     <div>
       <h3>{props.markets.length} Markets In Your Area</h3>
       {props.markets.map((market, i) => (
-        <MarketCard market={market} photo={data[i]} key={i} />
+        <MarketCard market={market} photo={data[i]} key={i} func={props.func} />
       ))}
     </div>
   );

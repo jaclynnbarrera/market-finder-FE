@@ -19,7 +19,7 @@ function MarketCard(props) {
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, [props.market.id]);
 
   function handleClick() {
     console.log(details);

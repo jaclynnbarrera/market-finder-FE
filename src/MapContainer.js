@@ -5,6 +5,7 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import Geocode from "react-geocode";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -17,7 +18,22 @@ function MapContainer() {
 
   useEffect(() => {
     getMarkets();
-  });
+  }, []);
+
+  const [markets, setMarkers] = useState([]);
+
+  const pullData = (marketInfo) => {
+    // Geocode.setApiKey(process.env.REACT_APP_GEOCODE_KEY);
+    // Geocode.fromAddress(marketInfo.Address).then(
+    //   (response) => {
+    //     const { lat, lng } = response.results[0].geometry.location;
+    //     console.log(lat, lng);
+    //   },
+    //   (error) => {
+    //     console.error(error);
+    //   }
+    // );
+  };
 
   function getMarkets() {
     const coordinates = {
@@ -46,7 +62,7 @@ function MapContainer() {
         </Grid>
         <Grid item xs={4}>
           <Item style={{ maxHeight: "80vh", overflow: "auto" }}>
-            <MarketContainer markets={marketResults} />
+            <MarketContainer markets={marketResults} func={pullData} />
           </Item>
         </Grid>
       </Grid>
