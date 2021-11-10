@@ -1,6 +1,12 @@
 .app-name {
   color: black;
   margin: 5px;
+  font-family: cheee, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 50px;
+  text-align: center;
+  line-height: 60px;
 }
 
 .market-card {
@@ -9,4 +15,10 @@
 
 .favorites {
   background-color: red;
+}
+
+.nav {
+  font-family: plantin, sans-serif;
+  font-style: normal;
+  font-weight: 300;
 }
