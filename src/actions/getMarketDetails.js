@@ -9,7 +9,9 @@ export function getMarketDetails(markets) {
       });
   };
 
-  let reformattedMarkets = markets.map((market) => {
+  const newMarketsArr = markets.map(getDeetsAndFormat);
+
+  function getDeetsAndFormat(market) {
     let reformattedMarket = {};
     fetchDetails(market).then((details) => {
       reformattedMarket["id"] = market.id;
@@ -20,6 +22,6 @@ export function getMarketDetails(markets) {
       reformattedMarket["schedule"] = details.marketdetails.Schedule;
     });
     return reformattedMarket;
-  });
-  return reformattedMarkets;
+  }
+  return newMarketsArr;
 }

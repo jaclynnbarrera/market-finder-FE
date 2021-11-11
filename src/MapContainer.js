@@ -20,7 +20,7 @@ function MapContainer() {
 
   useEffect(() => {
     getMarkets().then((markets) => {
-      console.log(getMarketDetails(markets.results));
+      setMarketResults(getMarketDetails(markets.results));
     });
   }, []);
 
