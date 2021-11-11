@@ -9,6 +9,10 @@ function MarketCard(props) {
   const [details, setDetails] = useState([]);
 
   useEffect(() => {
+    getDetails();
+  }, []);
+
+  function getDetails(props) {
     fetch(
       `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=${props.market.id}`
     )
@@ -20,7 +24,7 @@ function MarketCard(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, [props]);
+  }
 
   function handleClick() {
     console.log(details);
