@@ -41,7 +41,6 @@ function MapContainer() {
   };
 
   const [markers, setMarkers] = useState([]);
-  console.log(markers);
 
   const pullData = (marketDetails) => {
     Geocode.setApiKey(process.env.REACT_APP_GEOCODE_KEY);
@@ -61,7 +60,9 @@ function MapContainer() {
       <Grid container spacing={2} columns={12}>
         <Grid item xs={8}>
           <Item>
-            <Map markers={markers} />
+            <Map
+              markers={markers.length === markets.length ? markers : false}
+            />
           </Item>
         </Grid>
         <Grid item xs={4}>
