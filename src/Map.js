@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  LoadScript,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api";
 
 function Map(props) {
-  if (props.markers !== false) {
-    console.log(props.markers);
-  }
-
-  //if props.markers !== false
   const [currentPosition, setCurrentPosition] = useState({});
 
   const mapStyles = {
@@ -32,6 +32,11 @@ function Map(props) {
     alert("Failed to get your location");
   }
 
+  const [selected, setSelected] = useState(false);
+  const onSelect = (item) => {
+    setSelected(item);
+  };
+
   return (
     <div>
       <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLEMAPS_KEY}>
@@ -42,9 +47,24 @@ function Map(props) {
         >
           {props.markers !== false
             ? props.markers.map((item, i) => {
-                return <Marker key={i} position={item} />;
+                return (
+                  <Marker
+                    key={i}
+                    position={item}
+                    onClick={() => onSelect(item)}
+                  />
+                );
               })
             : null}
+          {selected !== false ? (
+            <InfoWindow
+              position={selected}
+              clickable={true}
+              onCloseClick={() => setSelected(false)}
+            >
+              <p>clicked!</p>
+            </InfoWindow>
+          ) : null}
         </GoogleMap>
       </LoadScript>
     </div>
