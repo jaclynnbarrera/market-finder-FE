@@ -12,7 +12,7 @@ function MarketCard(props) {
     getDetails();
   }, []);
 
-  function getDetails(props) {
+  function getDetails() {
     fetch(
       `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=${props.market.id}`
     )
@@ -41,7 +41,7 @@ function MarketCard(props) {
           <CardMedia
             component="img"
             height="100"
-            image={props.photo.urls.regular}
+            // image={props.photo.urls.regular}
             alt="farmers market"
           />
           <CardContent>

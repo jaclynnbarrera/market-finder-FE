@@ -6,8 +6,6 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Geocode from "react-geocode";
-import { getMarkets } from "./actions/getMarkets";
-import { getMarketDetails } from "./actions/getMarketDetails";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -19,10 +17,26 @@ function MapContainer() {
   const [markets, setMarketResults] = useState([]);
 
   useEffect(() => {
-    getMarkets().then((markets) => {
-      setMarketResults(getMarketDetails(markets.results));
-    });
+    getMarkets();
   }, []);
+
+  function getMarkets() {
+    const coordinates = {
+      lat: 40.8590831,
+      lng: -73.8537585,
+    };
+
+    return fetch(
+      `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=${coordinates.lat}&lng=${coordinates.lng}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setMarketResults(data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   const [markers, setMarkers] = useState([]);
 
@@ -49,7 +63,9 @@ function MapContainer() {
         </Grid>
         <Grid item xs={4}>
           <Item style={{ maxHeight: "80vh", overflow: "auto" }}>
-            <MarketContainer markets={markets} func={pullData} />
+            {markets.length !== 0 ? (
+              <MarketContainer markets={markets} func={pullData} />
+            ) : null}
           </Item>
         </Grid>
       </Grid>
