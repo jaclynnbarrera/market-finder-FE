@@ -41,19 +41,20 @@ function MapContainer() {
   };
 
   const [markers, setMarkers] = useState([]);
+  console.log(markers);
 
-  // const pullData = (marketDetails) => {
-  //   Geocode.setApiKey(process.env.REACT_APP_GEOCODE_KEY);
-  //   Geocode.fromAddress(marketDetails.Address).then(
-  //     (response) => {
-  //       const { lat, lng } = response.results[0].geometry.location;
-  //       setMarkers((oldArray) => [...oldArray, { lat: lat, lng: lng }]);
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // };
+  const pullData = (marketDetails) => {
+    Geocode.setApiKey(process.env.REACT_APP_GEOCODE_KEY);
+    Geocode.fromAddress(marketDetails.Address).then(
+      (response) => {
+        const { lat, lng } = response.results[0].geometry.location;
+        setMarkers((oldArray) => [...oldArray, { lat: lat, lng: lng }]);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -66,7 +67,7 @@ function MapContainer() {
         <Grid item xs={4}>
           <Item style={{ maxHeight: "80vh", overflow: "auto" }}>
             {markets.length !== 0 ? (
-              <MarketContainer markets={markets} />
+              <MarketContainer markets={markets} func={pullData} />
             ) : null}
           </Item>
         </Grid>
