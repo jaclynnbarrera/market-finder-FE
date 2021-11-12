@@ -42,7 +42,7 @@ function Map(props) {
       <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLEMAPS_KEY}>
         <GoogleMap
           mapContainerStyle={mapStyles}
-          zoom={11}
+          zoom={12}
           center={currentPosition}
         >
           {props.markers !== false

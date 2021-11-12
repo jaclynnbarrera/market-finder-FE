@@ -19,8 +19,8 @@ function MapContainer() {
   useEffect(() => {
     //this logic will use geolocator
     const coords = {
-      lat: 40.8590831,
-      lng: -73.8537585,
+      lat: 40.8591003,
+      lng: -73.8538145,
     };
     getMarkets(coords);
   }, []);
