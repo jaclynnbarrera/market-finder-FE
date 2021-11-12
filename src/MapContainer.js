@@ -17,41 +17,43 @@ function MapContainer() {
   const [markets, setMarketResults] = useState([]);
 
   useEffect(() => {
-    getMarkets();
-  }, []);
-
-  function getMarkets() {
-    const coordinates = {
+    //this logic will use geolocator
+    const coords = {
       lat: 40.8590831,
       lng: -73.8537585,
     };
+    getMarkets(coords);
+  }, []);
 
-    return fetch(
-      `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=${coordinates.lat}&lng=${coordinates.lng}`
+  const getMarkets = (coords) => {
+    let results = fetch(
+      `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=${coords.lat}&lng=${coords.lng}`
     )
-      .then((response) => response.json())
+      .then((resp) => resp.json())
       .then((data) => {
         setMarketResults(data.results);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Error:", err);
       });
-  }
+
+    return results;
+  };
 
   const [markers, setMarkers] = useState([]);
 
-  const pullData = (marketDetails) => {
-    Geocode.setApiKey(process.env.REACT_APP_GEOCODE_KEY);
-    Geocode.fromAddress(marketDetails.Address).then(
-      (response) => {
-        const { lat, lng } = response.results[0].geometry.location;
-        setMarkers((oldArray) => [...oldArray, { lat: lat, lng: lng }]);
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  };
+  // const pullData = (marketDetails) => {
+  //   Geocode.setApiKey(process.env.REACT_APP_GEOCODE_KEY);
+  //   Geocode.fromAddress(marketDetails.Address).then(
+  //     (response) => {
+  //       const { lat, lng } = response.results[0].geometry.location;
+  //       setMarkers((oldArray) => [...oldArray, { lat: lat, lng: lng }]);
+  //     },
+  //     (error) => {
+  //       console.error(error);
+  //     }
+  //   );
+  // };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -64,7 +66,7 @@ function MapContainer() {
         <Grid item xs={4}>
           <Item style={{ maxHeight: "80vh", overflow: "auto" }}>
             {markets.length !== 0 ? (
-              <MarketContainer markets={markets} func={pullData} />
+              <MarketContainer markets={markets} />
             ) : null}
           </Item>
         </Grid>

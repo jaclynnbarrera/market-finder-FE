@@ -7,28 +7,31 @@ import { CardActionArea } from "@mui/material";
 
 function MarketCard(props) {
   const [details, setDetails] = useState([]);
+  const [photo, setPhoto] = useState("");
 
   useEffect(() => {
+    function getDetails() {
+      fetch(
+        `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=${props.market.id}`
+      )
+        .then((resp) => resp.json())
+        .then((data) => {
+          setDetails(data.marketdetails);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
     getDetails();
   }, []);
 
-  function getDetails() {
-    fetch(
-      `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=${props.market.id}`
-    )
-      .then((resp) => resp.json())
-      .then((data) => {
-        setDetails(data.marketdetails);
-        props.func(data.marketdetails);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  useEffect(() => {
+    setPhoto("https://source.unsplash.com/1600x900/?farmer,market");
+  }, [props.market]);
 
-  function handleClick() {
+  const handleClick = () => {
     console.log(details);
-  }
+  };
 
   return (
     <div
@@ -41,7 +44,7 @@ function MarketCard(props) {
           <CardMedia
             component="img"
             height="100"
-            // image={props.photo.urls.regular}
+            image={photo}
             alt="farmers market"
           />
           <CardContent>
