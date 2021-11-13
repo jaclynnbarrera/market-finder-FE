@@ -45,7 +45,11 @@ function MarketCard(props) {
           <CardMedia
             component="img"
             height="100"
-            image={photo}
+            image={
+              props.photo !== undefined
+                ? props.photo.urls.regular
+                : "https://source.unsplash.com/1600x900/?farmer,market"
+            }
             alt="farmers market"
           />
           <CardContent>
