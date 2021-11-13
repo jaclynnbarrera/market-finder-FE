@@ -7,7 +7,6 @@ import { CardActionArea } from "@mui/material";
 
 function MarketCard(props) {
   const [details, setDetails] = useState([]);
-  const [photo, setPhoto] = useState("");
 
   useEffect(() => {
     function getDetails() {
@@ -25,10 +24,6 @@ function MarketCard(props) {
     }
     getDetails();
   }, []);
-
-  useEffect(() => {
-    setPhoto("https://source.unsplash.com/1600x900/?farmer,market");
-  }, [props.market]);
 
   const handleClick = () => {
     console.log(details);
