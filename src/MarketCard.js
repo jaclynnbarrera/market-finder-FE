@@ -4,6 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import MarketInfo from "./MarketInfo";
 
 function MarketCard(props) {
   const [details, setDetails] = useState([]);
@@ -25,16 +26,8 @@ function MarketCard(props) {
     getDetails();
   }, []);
 
-  const handleClick = () => {
-    console.log(details);
-  };
-
   return (
-    <div
-      className="market-card"
-      key={props.market.marketname}
-      onClick={handleClick}
-    >
+    <div className="market-card" key={props.market.marketname}>
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
           <CardMedia
@@ -56,6 +49,7 @@ function MarketCard(props) {
             </Typography>
           </CardContent>
         </CardActionArea>
+        <MarketInfo details={details} name={props.market.marketname} />
       </Card>
     </div>
   );
