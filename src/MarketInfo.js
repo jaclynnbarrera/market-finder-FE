@@ -18,6 +18,7 @@ const style = {
 
 export default function MarketInfo(props) {
   const [open, setOpen] = React.useState(false);
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -25,7 +26,7 @@ export default function MarketInfo(props) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Market Info</Button>
+      <Button onClick={handleOpen}>market info</Button>
       <Modal
         open={open}
         onClose={handleClose}
