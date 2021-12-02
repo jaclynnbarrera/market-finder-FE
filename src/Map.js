@@ -34,8 +34,15 @@ function Map(props) {
   }
 
   const [selected, setSelected] = useState(false);
-  const onSelect = (item) => {
-    setSelected(item);
+
+  const onSelect = (market) => {
+    console.log("marker selected :)");
+    setSelected(market);
+  };
+
+  const handleClose = () => {
+    console.log("handle close map marker");
+    setSelected(false);
   };
 
   return (
@@ -59,7 +66,12 @@ function Map(props) {
             : null}
 
           {selected !== false ? (
-            <MarketInfo details={selected.details} name={selected.name} />
+            <MarketInfo
+              details={selected.details}
+              name={selected.name}
+              func={handleClose}
+              open={true}
+            />
           ) : null}
         </GoogleMap>
       </LoadScript>

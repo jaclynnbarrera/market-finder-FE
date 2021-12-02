@@ -29,12 +29,10 @@ function MarketCard(props) {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
-    console.log("setting click state to true bc it has just been clicked :)");
     setClicked(true);
   };
 
   const handleClose = () => {
-    console.log("handle close market card");
     setClicked(false);
   };
 
