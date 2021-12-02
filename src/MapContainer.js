@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Geocode from "react-geocode";
+import LocationBar from "./LocationBar";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -17,10 +18,10 @@ function MapContainer() {
   const [markets, setMarketResults] = useState([]);
 
   useEffect(() => {
-    //this logic will use geolocator
+    //this logic with button will use geolocator
     const coords = {
-      lat: 40.8591003,
-      lng: -73.8538145,
+      lat: 40.9692361,
+      lng: -73.8067627,
     };
     getMarkets(coords);
   }, []);
@@ -61,6 +62,11 @@ function MapContainer() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2} columns={12}>
+        <Grid item xs={8}>
+          <Item>
+            <LocationBar />
+          </Item>
+        </Grid>
         <Grid item xs={8}>
           <Item>
             <Map

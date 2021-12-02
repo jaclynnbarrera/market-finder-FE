@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  GoogleMap,
-  LoadScript,
-  Marker,
-  InfoWindow,
-} from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import MarketInfo from "./MarketInfo";
 
 function Map(props) {
@@ -36,12 +31,10 @@ function Map(props) {
   const [selected, setSelected] = useState(false);
 
   const onSelect = (market) => {
-    console.log("marker selected :)");
     setSelected(market);
   };
 
   const handleClose = () => {
-    console.log("handle close map marker");
     setSelected(false);
   };
 
