@@ -1,6 +1,5 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
@@ -17,19 +16,13 @@ const style = {
 };
 
 export default function MarketInfo(props) {
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => setOpen(false);
-
   return (
     <div>
-      <Button onClick={handleOpen}>market info</Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={props.open}
+        onClose={() => {
+          props.func();
+        }}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

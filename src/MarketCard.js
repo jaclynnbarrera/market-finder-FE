@@ -26,10 +26,22 @@ function MarketCard(props) {
     getDetails();
   }, []);
 
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => {
+    console.log("setting click state to true bc it has just been clicked :)");
+    setClicked(true);
+  };
+
+  const handleClose = () => {
+    console.log("handle close market card");
+    setClicked(false);
+  };
+
   return (
     <div className="market-card" key={props.market.marketname}>
       <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea>
+        <CardActionArea onClick={handleClick}>
           <CardMedia
             component="img"
             height="100"
@@ -49,7 +61,15 @@ function MarketCard(props) {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <MarketInfo details={details} name={props.market.marketname} />
+
+        {clicked === true ? (
+          <MarketInfo
+            details={details}
+            name={props.market.marketname}
+            func={handleClose}
+            open={clicked}
+          />
+        ) : null}
       </Card>
     </div>
   );
