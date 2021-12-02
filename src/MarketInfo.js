@@ -20,7 +20,6 @@ export default function MarketInfo(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
-    console.log(props);
   };
   const handleClose = () => setOpen(false);
 

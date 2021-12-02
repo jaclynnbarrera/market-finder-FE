@@ -17,7 +17,7 @@ function MarketCard(props) {
         .then((resp) => resp.json())
         .then((data) => {
           setDetails(data.marketdetails);
-          props.func(data.marketdetails);
+          props.func(data.marketdetails, props.market.marketname);
         })
         .catch((err) => {
           console.log(err);

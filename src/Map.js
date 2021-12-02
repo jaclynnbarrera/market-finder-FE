@@ -5,6 +5,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+import MarketInfo from "./MarketInfo";
 
 function Map(props) {
   const [currentPosition, setCurrentPosition] = useState({});
@@ -56,14 +57,9 @@ function Map(props) {
                 );
               })
             : null}
+
           {selected !== false ? (
-            <InfoWindow
-              position={selected}
-              clickable={true}
-              onCloseClick={() => setSelected(false)}
-            >
-              <p>clicked!</p>
-            </InfoWindow>
+            <MarketInfo details={selected.details} name={selected.name} />
           ) : null}
         </GoogleMap>
       </LoadScript>
