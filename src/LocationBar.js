@@ -1,12 +1,15 @@
 import React from "react";
 import AddLocationIcon from "@mui/icons-material/AddLocation";
-import SearchIcon from "@mui/icons-material/Search";
+// import SearchIcon from "@mui/icons-material/Search";
 
 function LocationBar() {
+  const handleClick = () => {
+    console.log("location icon clicked!");
+  };
+
   return (
     <div>
-      <AddLocationIcon />
-      <SearchIcon />
+      <AddLocationIcon onClick={handleClick} /> Set Your Location
     </div>
   );
 }

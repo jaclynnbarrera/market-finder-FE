@@ -60,29 +60,25 @@ function MapContainer() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2} columns={12}>
-        <Grid item xs={8}>
-          <Item>
-            <LocationBar />
-          </Item>
-        </Grid>
-        <Grid item xs={8}>
-          <Item>
-            <Map
-              markers={markers.length === markets.length ? markers : false}
-            />
-          </Item>
-        </Grid>
-        <Grid item xs={4}>
-          <Item style={{ maxHeight: "80vh", overflow: "auto" }}>
-            {markets.length !== 0 ? (
-              <MarketContainer markets={markets} func={pullData} />
-            ) : null}
-          </Item>
-        </Grid>
+    <Grid container spacing={2} columns={12}>
+      <Grid item xs={8}>
+        <Item>
+          <LocationBar />
+        </Item>
       </Grid>
-    </Box>
+      <Grid item xs={8}>
+        <Item>
+          <Map markers={markers.length === markets.length ? markers : false} />
+        </Item>
+      </Grid>
+      <Grid item xs={4}>
+        <Item style={{ maxHeight: "80vh", overflow: "auto" }}>
+          {markets.length !== 0 ? (
+            <MarketContainer markets={markets} func={pullData} />
+          ) : null}
+        </Item>
+      </Grid>
+    </Grid>
   );
 }
 
