@@ -71,7 +71,7 @@ export default function LocationBar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            Set Your Location
           </Typography>
           <Search>
             <SearchIconWrapper>
