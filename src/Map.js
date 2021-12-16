@@ -39,14 +39,14 @@ function Map(props) {
   };
 
   return (
-    <div>
+    <div className="map">
       <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLEMAPS_KEY}>
         <GoogleMap
           mapContainerStyle={mapStyles}
-          zoom={12}
+          zoom={4}
           center={currentPosition}
         >
-          {props.markers !== false
+          {/* {props.markers !== false
             ? props.markers.map((item, i) => {
                 return (
                   <Marker
@@ -56,7 +56,7 @@ function Map(props) {
                   />
                 );
               })
-            : null}
+            : null} */}
 
           {selected !== false ? (
             <MarketInfo

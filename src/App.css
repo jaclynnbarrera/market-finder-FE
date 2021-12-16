@@ -18,19 +18,23 @@ grid-row-gap: 0px;;
 background-color: #F7FFF6;
 }
 
-.div1 { 
+.leftnav { 
   grid-area: 1 / 1 / 6 / 2; 
   border-right: 1px solid black;
 }
 
-.div2 { 
+.topbar { 
   grid-area: 1 / 2 / 2 / 7; 
   border-bottom: 1px solid black;
 }
-.div3 { 
+.main { 
   grid-area: 2 / 2 / 6 / 5; 
   border-right: 1px solid black;
 }
-.div4 { 
+.rightbar { 
   grid-area: 2 / 5 / 6 / 7;
  }
+
+.map {
+  padding: 7px
+}

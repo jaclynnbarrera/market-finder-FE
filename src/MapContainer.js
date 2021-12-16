@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Map from "./Map";
-import MarketContainer from "./MarketContainer";
 import Geocode from "react-geocode";
-
 
 function MapContainer() {
   const [markets, setMarketResults] = useState([]);
