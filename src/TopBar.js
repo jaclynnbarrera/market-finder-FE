@@ -4,7 +4,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
-function TopBar() {
+function TopBar(props) {
   const handleSubmit = () => {
     console.log("submitted");
   };
@@ -12,9 +12,14 @@ function TopBar() {
   const handleChange = () => {
     console.log("changed");
   };
+
+  const success = (position) => {};
+
   return (
     <div className="topbar">
-      <button className="button">Use Current Location</button>
+      <button className="button" onClick={props.func}>
+        Use Current Location
+      </button>
       <div>
         <form onSubmit={handleSubmit}>
           <input
@@ -26,15 +31,15 @@ function TopBar() {
         </form>
       </div>
       <div className="item">
-        <LocationOnIcon />
+        <LocationOnIcon style={{ fill: "#588157" }} />
         <p>New York, New York</p>
       </div>
       <div className="item">
-        <WbSunnyIcon />
+        <WbSunnyIcon style={{ fill: "#588157" }} />
         <p>Temperature</p>
       </div>
       <div className="item">
-        <AccessTimeIcon />
+        <AccessTimeIcon style={{ fill: "#588157" }} />
         <p>5:05PM</p>
       </div>
     </div>

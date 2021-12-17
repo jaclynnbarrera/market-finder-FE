@@ -1,16 +1,10 @@
 import "../src/styling/App.css";
-import LeftNav from "./LeftNav";
-import TopBar from "./TopBar";
-import Main from "./Main";
-import RightBar from "./RightBar";
+import Location from "./Location";
 
 function App() {
   return (
-    <div className="parent">
-      <LeftNav />
-      <TopBar />
-      <Main />
-      <RightBar />
+    <div>
+      <Location />
     </div>
   );
 }

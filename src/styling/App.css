@@ -36,15 +36,12 @@
   align-items: center;
 }
 
-.main {
+.map {
   grid-area: 2 / 2 / 6 / 5;
   border-right: 1px solid black;
+  padding: 7px;
 }
 
 .rightbar {
   grid-area: 2 / 5 / 6 / 7;
-}
-
-.map {
-  padding: 7px;
 }
