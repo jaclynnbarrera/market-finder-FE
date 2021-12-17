@@ -29,12 +29,33 @@ export default function Location() {
 
   const err = () => alert("Failed to get your location");
 
+  const [markets, setMarketResults] = useState([]);
+
+  useEffect(() => {
+    getMarkets();
+  });
+
+  const getMarkets = () => {
+    let results = fetch(
+      `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=${currentLocation.lat}&lng=${currentLocation.lng}`
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        setMarketResults(data.results);
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+      });
+
+    return results;
+  };
+
   return (
     <div className="parent">
       <LeftNav />
       <TopBar func={handleClick} />
       <Map location={currentLocation} clicked={buttonClicked} />
-      <RightBar />
+      <RightBar markets={markets} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import MarketCard from "./MarketCard";
 import { createApi } from "unsplash-js";
 import { useEffect, useState } from "react";
@@ -24,6 +24,9 @@ export default function RightBar(props) {
 
   return (
     <div className="rightbar">
+      {props.markets.map((market, i) => (
+        <p>{market.marketname}</p>
+      ))}
       {/* <h3>{props.markets && props.markets.length} Markets In Your Area</h3>
 
       {props.markets.map((market, i) => (

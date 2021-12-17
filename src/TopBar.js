@@ -13,12 +13,10 @@ function TopBar(props) {
     console.log("changed");
   };
 
-  const success = (position) => {};
-
   return (
     <div className="topbar">
       <button className="button" onClick={props.func}>
-        Use Current Location
+        <p>Use Current Location</p>
       </button>
       <div>
         <form onSubmit={handleSubmit}>
