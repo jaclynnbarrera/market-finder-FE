@@ -6,7 +6,8 @@
   border-bottom: 1px solid black;
 }
 
-.button {
+.button,
+.zip {
   background-color: #588157;
   border: none;
   color: white;
@@ -15,6 +16,17 @@
   display: flex;
   align-items: center;
   font-size: 17px;
+}
+
+.zip {
+  width: 65%;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  text-indent: 5px;
 }
 
 ::placeholder {
