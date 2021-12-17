@@ -15,7 +15,7 @@
   grid-template-rows: 70px;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-color: #f7fff6;
+  background-color: #fffcf2;
 }
 
 .leftnav {
@@ -39,7 +39,7 @@
 
 .topbar {
   display: flex;
-  align-items: flex-start, center;
+  padding: 10px;
   justify-content: space-between;
   grid-area: 1 / 2 / 2 / 7;
   border-bottom: 1px solid black;
@@ -54,4 +54,12 @@
 
 .map {
   padding: 7px;
+}
+
+.button {
+  background-color: #588157;
+  border: none;
+  color: white;
+  border-radius: 30px;
+  padding: 15px;
 }
