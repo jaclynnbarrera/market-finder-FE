@@ -7,6 +7,7 @@
   font-size: 50px;
   text-align: center;
   line-height: 60px;
+  padding: 20px
 }
 
 .parent {
@@ -21,6 +22,13 @@ background-color: #F7FFF6;
 .leftnav { 
   grid-area: 1 / 1 / 6 / 2; 
   border-right: 1px solid black;
+}
+
+.leftnav p { 
+  text-align: center;
+  font-family:'Times New Roman', Times, serif;
+  font-size: 20px;
+
 }
 
 .topbar { 
