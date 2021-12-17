@@ -1,0 +1,22 @@
+.topbar {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  grid-area: 1 / 2 / 2 / 7;
+  border-bottom: 1px solid black;
+}
+
+.button {
+  background-color: #588157;
+  border: none;
+  color: white;
+  border-radius: 30px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+}
+
+::placeholder {
+  color: white;
+}

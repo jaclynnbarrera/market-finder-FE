@@ -9,22 +9,22 @@ function LeftNav() {
     <div className="leftnav">
       <h1 className="app-name">MARKET FINDER</h1>
       <div className="menu-item">
-        <MapIcon />
+        <MapIcon style={{ fill: "#588157" }} />
         <p>Map</p>
       </div>
 
       <div className="menu-item">
-        <FavoriteIcon />
+        <FavoriteIcon style={{ fill: "#588157" }} />
         <p>Favorites</p>
       </div>
 
       <div className="menu-item">
-        <ManageAccountsIcon />
+        <ManageAccountsIcon style={{ fill: "#588157" }} />
         <p>Account</p>
       </div>
 
       <div className="menu-item">
-        <LogoutIcon />
+        <LogoutIcon style={{ fill: "#588157" }} />
         <p>Logout</p>
       </div>
     </div>
