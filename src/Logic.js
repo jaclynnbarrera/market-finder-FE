@@ -53,6 +53,7 @@ export default function Logic() {
     const processRequest = (e) => {
       if (xhr.readyState == 4 && xhr.status == 200) {
         const response = JSON.parse(xhr.responseText);
+        console.log(response);
         const city = response.address.city;
         const state = response.address.state;
         const cityState = {
