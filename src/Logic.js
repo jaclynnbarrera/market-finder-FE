@@ -30,7 +30,10 @@ export default function Logic() {
 
   const err = () => alert("Failed to get your location");
 
-  const [cityState, setCityState] = useState({});
+  const [cityState, setCityState] = useState({
+    city: "Lebanon",
+    state: "Kansas",
+  });
 
   const getCity = (current) => {
     const xhr = new XMLHttpRequest();
@@ -67,10 +70,6 @@ export default function Logic() {
 
   const [markets, setMarketResults] = useState([]);
 
-  useEffect(() => {
-    getMarkets();
-  });
-
   const getMarkets = () => {
     let results = fetch(
       `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=${currentLocation.lat}&lng=${currentLocation.lng}`
@@ -84,6 +83,10 @@ export default function Logic() {
       });
     return results;
   };
+
+  useEffect(() => {
+    getMarkets();
+  });
 
   // const getDetails = () => {
   //   fetch(
