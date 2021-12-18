@@ -1,0 +1,12 @@
+.marketcard {
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 17px;
+}
+
+.marketcard img {
+  max-width: 80%;
+}

@@ -1,10 +1,10 @@
 import "../src/styling/App.css";
-import Location from "./Location";
+import Logic from "./Logic";
 
 function App() {
   return (
     <div>
-      <Location />
+      <Logic />
     </div>
   );
 }

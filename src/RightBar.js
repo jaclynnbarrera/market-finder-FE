@@ -1,3 +1,4 @@
+import "../src/styling/RightBar.css";
 import React from "react";
 import MarketCard from "./MarketCard";
 import { createApi } from "unsplash-js";
@@ -24,10 +25,7 @@ export default function RightBar(props) {
 
   return (
     <div className="rightbar">
-      {props.markets.map((market, i) => (
-        <p>{market.marketname}</p>
-      ))}
-      {/* <h3>{props.markets && props.markets.length} Markets In Your Area</h3>
+      <p># markets found</p>
 
       {props.markets.map((market, i) => (
         <MarketCard
@@ -36,7 +34,7 @@ export default function RightBar(props) {
           func={props.func}
           photo={photos.length !== 0 ? photos[i] : undefined}
         />
-      ))} */}
+      ))}
     </div>
   );
 }

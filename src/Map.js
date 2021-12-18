@@ -3,7 +3,6 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import MarketInfo from "./MarketInfo";
 
 function Map(props) {
-  //props will be location
   const mapStyles = {
     height: "80vh",
     width: "100%",

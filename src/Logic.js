@@ -4,7 +4,7 @@ import TopBar from "./TopBar";
 import Map from "./Map";
 import RightBar from "./RightBar";
 
-export default function Location() {
+export default function Logic() {
   const [currentLocation, setCurrentLocation] = useState({
     lat: 39.8097343,
     lng: -98.5556199,
@@ -46,9 +46,36 @@ export default function Location() {
       .catch((err) => {
         console.log("Error:", err);
       });
-
     return results;
   };
+
+  // const getDetails = () => {
+  //   fetch(
+  //     `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=${props.market.id}`
+  //   )
+  //     .then((resp) => resp.json())
+  //     .then((data) => {
+  //       setDetails(data.marketdetails);
+  //       props.func(data.marketdetails, props.market.marketname);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  // const getMarketDetails = () => {
+  //   fetch(
+  //     `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=${props.market.id}`
+  //   )
+  //     .then((resp) => resp.json())
+  //     .then((data) => {
+  //       setDetails(data.marketdetails);
+  //       props.func(data.marketdetails, props.market.marketname);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   return (
     <div className="parent">
