@@ -25,7 +25,9 @@ export default function RightBar(props) {
 
   return (
     <div className="rightbar">
-      <p>{props.markets.length} markets found</p>
+      <p className="marketfound">
+        {props.markets.length} farmers markets found in your area
+      </p>
 
       {props.markets.map((market, i) => (
         <MarketCard

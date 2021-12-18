@@ -23,11 +23,47 @@ export default function Logic() {
       lat: position.coords.latitude,
       lng: position.coords.longitude,
     };
+    getCity(current);
     setCurrentLocation(current);
     setButtonClicked(true);
   };
 
   const err = () => alert("Failed to get your location");
+
+  const [cityState, setCityState] = useState({});
+
+  const getCity = (current) => {
+    const xhr = new XMLHttpRequest();
+    const lat = current.lat;
+    const lng = current.lng;
+
+    xhr.open(
+      "GET",
+      "https://us1.locationiq.com/v1/reverse.php?key=pk.05b5e7b1813b2629d04a1bb38e785688&lat=" +
+        lat +
+        "&lon=" +
+        lng +
+        "&format=json",
+      true
+    );
+
+    const processRequest = (e) => {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        const response = JSON.parse(xhr.responseText);
+        const city = response.address.city;
+        const state = response.address.state;
+        const cityState = {
+          city: city,
+          state: state,
+        };
+        setCityState(cityState);
+        return;
+      }
+    };
+    xhr.send();
+    xhr.onreadystatechange = processRequest;
+    xhr.addEventListener("readystatechange", processRequest, false);
+  };
 
   const [markets, setMarketResults] = useState([]);
 
@@ -80,7 +116,7 @@ export default function Logic() {
   return (
     <div className="parent">
       <LeftNav />
-      <TopBar func={handleClick} />
+      <TopBar func={handleClick} cityState={cityState} />
       <Map location={currentLocation} clicked={buttonClicked} />
       <RightBar markets={markets} />
     </div>

@@ -30,7 +30,9 @@ function TopBar(props) {
       </div>
       <div className="item">
         <LocationOnIcon style={{ fill: "#588157" }} />
-        <p>New York, New York</p>
+        <p>
+          {props.cityState.city}, {props.cityState.state}
+        </p>
       </div>
       <div className="item">
         <WbSunnyIcon style={{ fill: "#588157" }} />
