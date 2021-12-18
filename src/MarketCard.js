@@ -16,7 +16,7 @@ export default function MarketCard(props) {
   return (
     <div className="marketcard" key={props.market.marketname}>
       <div className="float-child">
-        <h3>{props.market.marketname.slice(5)}</h3>
+        <h3>{props.market.marketname.slice(4)}</h3>
         <p>{props.market.marketname.slice(0, 4)} Miles Away</p>
       </div>
       <div className="float-child">
