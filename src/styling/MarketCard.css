@@ -3,11 +3,19 @@
   align-items: flex-start;
   border: 1px solid black;
   border-radius: 10px;
-  font-size: 17px;
   margin: 2px;
   min-height: 150px;
 }
 
-.marketcard img {
-  max-width: 50%;
+.marketcard-text {
+  padding: 3px;
+}
+
+.marketcard-image {
+  width: 100px;
+  height: 150px;
+}
+
+.marketcard-image img {
+  height: 100%;
 }
