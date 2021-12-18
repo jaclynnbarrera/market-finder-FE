@@ -1,21 +1,21 @@
 .marketcard {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   border: 1px solid black;
   border-radius: 10px;
   margin: 2px;
   min-height: 150px;
 }
 
-.marketcard-text {
-  padding: 3px;
+.float-child {
+  width: 50%;
+  float: left;
 }
 
-.marketcard-image {
-  width: 100px;
+img {
+  float: right;
+  width: 250px;
   height: 150px;
-}
-
-.marketcard-image img {
-  height: 100%;
+  object-fit: cover;
 }

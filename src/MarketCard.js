@@ -15,11 +15,11 @@ export default function MarketCard(props) {
 
   return (
     <div className="marketcard" key={props.market.marketname}>
-      <div className="marketcard-text">
+      <div className="float-child">
         <h3>{props.market.marketname.slice(5)}</h3>
         <p>{props.market.marketname.slice(0, 4)} Miles Away</p>
       </div>
-      <div className="marketcard-image">
+      <div className="float-child">
         <img
           src={
             props.photo !== undefined

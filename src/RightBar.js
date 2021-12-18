@@ -16,7 +16,7 @@ export default function RightBar(props) {
         query: "farmers markets",
         page: 1,
         perPage: 20,
-        orientation: "landscape",
+        orientation: "portrait",
       })
       .then((result) => {
         setPhotos(result.response.results);
