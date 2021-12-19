@@ -69,13 +69,14 @@ export default function Logic() {
     xhr.addEventListener("readystatechange", processRequest, false);
   };
 
+  const [temp, setTemp] = useState(40);
   const getTemp = (current) => {
     let temp = fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${current.lat}&lon=${current.lng}&appid=ceb6657dfd5aab9f00e5b48bfde5c001&units=imperial`
     )
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
+        setTemp(parseInt(data.main.temp));
       })
       .catch((err) => {
         console.log("Error:", err);
@@ -134,7 +135,7 @@ export default function Logic() {
   return (
     <div className="parent">
       <LeftNav />
-      <TopBar func={handleClick} cityState={cityState} />
+      <TopBar func={handleClick} cityState={cityState} temp={temp} />
       <Map location={currentLocation} clicked={buttonClicked} />
       <RightBar markets={markets} />
     </div>

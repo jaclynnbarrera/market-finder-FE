@@ -36,7 +36,7 @@ function TopBar(props) {
       </div>
       <div className="item">
         <WbSunnyIcon style={{ fill: "#588157" }} />
-        <p>Temperature</p>
+        <p>{props.temp} &#8457;</p>
       </div>
       <div className="item">
         <AccessTimeIcon style={{ fill: "#588157" }} />
