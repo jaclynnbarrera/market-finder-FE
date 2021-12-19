@@ -84,6 +84,10 @@ export default function Logic() {
     return temp;
   };
 
+  const [time, setTime] = useState({});
+
+  const getTime = () => {};
+
   const [markets, setMarketResults] = useState([]);
 
   const getMarkets = () => {
