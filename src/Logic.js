@@ -88,8 +88,15 @@ export default function Logic() {
 
   const getTime = () => {
     const now = new Date();
-    const time = now.getHours() + ":" + now.getMinutes();
-    setTime(time);
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let ampm = hours >= 12 ? "pm" : "am";
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    minutes = minutes.toString().padStart(2, "0");
+    let strTime = hours + ":" + minutes + " " + ampm;
+    setTime(strTime);
+    return strTime;
   };
 
   const [markets, setMarketResults] = useState([]);
