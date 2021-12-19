@@ -23,6 +23,7 @@ export default function Logic() {
       lat: position.coords.latitude,
       lng: position.coords.longitude,
     };
+    getTemp(current);
     getCity(current);
     setCurrentLocation(current);
     setButtonClicked(true);
@@ -53,7 +54,6 @@ export default function Logic() {
     const processRequest = (e) => {
       if (xhr.readyState == 4 && xhr.status == 200) {
         const response = JSON.parse(xhr.responseText);
-        console.log(response);
         const city = response.address.city;
         const state = response.address.state;
         const cityState = {
@@ -67,6 +67,20 @@ export default function Logic() {
     xhr.send();
     xhr.onreadystatechange = processRequest;
     xhr.addEventListener("readystatechange", processRequest, false);
+  };
+
+  const getTemp = (current) => {
+    let temp = fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${current.lat}&lon=${current.lng}&appid=ceb6657dfd5aab9f00e5b48bfde5c001&units=imperial`
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+      });
+    return temp;
   };
 
   const [markets, setMarketResults] = useState([]);
