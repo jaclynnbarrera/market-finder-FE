@@ -40,7 +40,7 @@ function TopBar(props) {
       </div>
       <div className="item">
         <AccessTimeIcon style={{ fill: "#588157" }} />
-        <p>5:05PM</p>
+        <p>{props.time}</p>
       </div>
     </div>
   );

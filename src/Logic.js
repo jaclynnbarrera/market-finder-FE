@@ -84,9 +84,13 @@ export default function Logic() {
     return temp;
   };
 
-  const [time, setTime] = useState({});
+  const [time, setTime] = useState();
 
-  const getTime = () => {};
+  const getTime = () => {
+    const now = new Date();
+    const time = now.getHours() + ":" + now.getMinutes();
+    setTime(time);
+  };
 
   const [markets, setMarketResults] = useState([]);
 
@@ -106,6 +110,7 @@ export default function Logic() {
 
   useEffect(() => {
     getMarkets();
+    setInterval(getTime, 1000);
   });
 
   // const getDetails = () => {
@@ -139,7 +144,12 @@ export default function Logic() {
   return (
     <div className="parent">
       <LeftNav />
-      <TopBar func={handleClick} cityState={cityState} temp={temp} />
+      <TopBar
+        func={handleClick}
+        cityState={cityState}
+        temp={temp}
+        time={time}
+      />
       <Map location={currentLocation} clicked={buttonClicked} />
       <RightBar markets={markets} />
     </div>
