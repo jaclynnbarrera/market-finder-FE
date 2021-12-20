@@ -26,6 +26,7 @@ function Map(props) {
           zoom={props.clicked === false ? 4 : 11}
           center={props.location}
         >
+          <Marker key={"location"} position={props.location} />
           {/* {props.markers !== false
             ? props.markers.map((item, i) => {
                 return (
