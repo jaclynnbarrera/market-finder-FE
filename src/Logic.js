@@ -113,11 +113,24 @@ export default function Logic() {
     return results;
   };
 
+  const [marketsDetails, setMarketsDetails] = useState([]);
+  const getMarketDetails = () => {
+    console.log(markets);
+
+    //get details for each market and send details to map for markers
+    //if i update the original state, will be caught in a loop
+    //create new state or
+  };
+
   useEffect(() => {
     getMarkets();
     getCity();
     // getTemp(); too many calls to API, on time out :)
   }, [currentLocation]);
+
+  useEffect(() => {
+    getMarketDetails();
+  }, [markets]);
 
   useEffect(() => {
     setInterval(getTime, 1000);
