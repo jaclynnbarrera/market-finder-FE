@@ -94,6 +94,8 @@ export default function Logic() {
     return strTime;
   };
 
+  setInterval(getTime, 1000);
+
   const [markets, setMarketResults] = useState([]);
 
   const getMarkets = () => {
@@ -102,6 +104,7 @@ export default function Logic() {
     )
       .then((resp) => resp.json())
       .then((data) => {
+        // console.log(data);
         setMarketResults(data.results);
       })
       .catch((err) => {
@@ -113,7 +116,10 @@ export default function Logic() {
   useEffect(() => {
     getMarkets();
     getCity();
-    getTemp();
+    // getTemp(); too many calls to API, on time out :)
+  }, [currentLocation]);
+
+  useEffect(() => {
     setInterval(getTime, 1000);
   });
 
