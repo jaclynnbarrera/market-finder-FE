@@ -18,6 +18,8 @@ function Map(props) {
     setSelected(false);
   };
 
+  const houseIcon = "http://maps.google.com/mapfiles/kml/pal2/icon10.png";
+
   return (
     <div className="map">
       <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLEMAPS_KEY}>
@@ -26,7 +28,7 @@ function Map(props) {
           zoom={props.clicked === false ? 4 : 11}
           center={props.location}
         >
-          <Marker key={"location"} position={props.location} />
+          <Marker key={"location"} position={props.location} icon={houseIcon} />
           {/* {props.markers !== false
             ? props.markers.map((item, i) => {
                 return (
