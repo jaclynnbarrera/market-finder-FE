@@ -18,7 +18,11 @@ export default function MarketCard(props) {
       <div className="float-child">
         <h3>{props.market.marketname.slice(4)}</h3>
         <p>{props.market.marketname.slice(0, 4)} Miles Away</p>
-        <p>
+        <p
+          onClick={() => {
+            console.log(props.market.deets);
+          }}
+        >
           See Market Info <i class="arrow right"></i>
         </p>
       </div>
@@ -31,7 +35,6 @@ export default function MarketCard(props) {
           }
         />
       </div>
-
       {/* {clicked === true ? (
           <MarketInfo
             details={details}

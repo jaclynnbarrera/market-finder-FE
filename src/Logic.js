@@ -104,7 +104,6 @@ export default function Logic() {
     )
       .then((resp) => resp.json())
       .then((data) => {
-        // console.log(data);
         setMarketResults(data.results);
       })
       .catch((err) => {
@@ -115,11 +114,22 @@ export default function Logic() {
 
   const [marketsDetails, setMarketsDetails] = useState([]);
   const getMarketDetails = () => {
-    console.log(markets);
-
-    //get details for each market and send details to map for markers
-    //if i update the original state, will be caught in a loop
-    //create new state or
+    let results = [];
+    markets.map((m) => {
+      let details = fetch(
+        `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=${m.id}`
+      )
+        .then((resp) => resp.json())
+        .then((data) => {
+          const deets = data.marketdetails;
+          results.push({ ...m, deets });
+        })
+        .catch((err) => {
+          console.log("Error:", err);
+        });
+      return details;
+    });
+    setMarketsDetails(results);
   };
 
   useEffect(() => {
@@ -174,7 +184,7 @@ export default function Logic() {
         time={time}
       />
       <Map location={currentLocation} clicked={buttonClicked} />
-      <RightBar markets={markets} />
+      <RightBar markets={markets} details={marketsDetails} />
     </div>
   );
 }

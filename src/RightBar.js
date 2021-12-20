@@ -28,8 +28,7 @@ export default function RightBar(props) {
       <p className="marketfound">
         {props.markets.length} farmers markets found in your area
       </p>
-
-      {props.markets.map((market, i) => (
+      {props.details.map((market, i) => (
         <MarketCard
           market={market}
           key={i}
