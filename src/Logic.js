@@ -23,23 +23,18 @@ export default function Logic() {
       lat: position.coords.latitude,
       lng: position.coords.longitude,
     };
-    getTemp(current);
-    getCity(current);
     setCurrentLocation(current);
     setButtonClicked(true);
   };
 
   const err = () => alert("Failed to get your location");
 
-  const [cityState, setCityState] = useState({
-    city: "Lebanon",
-    state: "Kansas",
-  });
+  const [cityState, setCityState] = useState({});
 
-  const getCity = (current) => {
+  const getCity = () => {
     const xhr = new XMLHttpRequest();
-    const lat = current.lat;
-    const lng = current.lng;
+    const lat = currentLocation.lat;
+    const lng = currentLocation.lng;
 
     xhr.open(
       "GET",
@@ -70,9 +65,9 @@ export default function Logic() {
   };
 
   const [temp, setTemp] = useState(40);
-  const getTemp = (current) => {
+  const getTemp = () => {
     let temp = fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${current.lat}&lon=${current.lng}&appid=ceb6657dfd5aab9f00e5b48bfde5c001&units=imperial`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${currentLocation.lat}&lon=${currentLocation.lng}&appid=ceb6657dfd5aab9f00e5b48bfde5c001&units=imperial`
     )
       .then((resp) => resp.json())
       .then((data) => {
@@ -117,6 +112,8 @@ export default function Logic() {
 
   useEffect(() => {
     getMarkets();
+    getCity();
+    getTemp();
     setInterval(getTime, 1000);
   });
 
