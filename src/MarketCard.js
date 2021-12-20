@@ -6,10 +6,12 @@ export default function MarketCard(props) {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
+    //pop up
     setClicked(true);
   };
 
   const handleClose = () => {
+    //close pop up
     setClicked(false);
   };
 
@@ -20,7 +22,7 @@ export default function MarketCard(props) {
         <p>{props.market.marketname.slice(0, 4)} Miles Away</p>
         <p
           onClick={() => {
-            console.log(props.market.deets);
+            console.log(props);
           }}
         >
           See Market Info <i class="arrow right"></i>

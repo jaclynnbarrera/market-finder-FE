@@ -146,34 +146,6 @@ export default function Logic() {
     setInterval(getTime, 1000);
   });
 
-  // const getDetails = () => {
-  //   fetch(
-  //     `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=${props.market.id}`
-  //   )
-  //     .then((resp) => resp.json())
-  //     .then((data) => {
-  //       setDetails(data.marketdetails);
-  //       props.func(data.marketdetails, props.market.marketname);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // const getMarketDetails = () => {
-  //   fetch(
-  //     `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=${props.market.id}`
-  //   )
-  //     .then((resp) => resp.json())
-  //     .then((data) => {
-  //       setDetails(data.marketdetails);
-  //       props.func(data.marketdetails, props.market.marketname);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
   return (
     <div className="parent">
       <LeftNav />
@@ -183,7 +155,11 @@ export default function Logic() {
         temp={temp}
         time={time}
       />
-      <Map location={currentLocation} clicked={buttonClicked} />
+      <Map
+        location={currentLocation}
+        clicked={buttonClicked}
+        details={marketsDetails}
+      />
       <RightBar markets={markets} details={marketsDetails} />
     </div>
   );
