@@ -32,7 +32,6 @@ export default function RightBar(props) {
         <MarketCard
           market={market}
           key={i}
-          func={props.func}
           photo={photos.length !== 0 ? photos[i] : undefined}
         />
       ))}

@@ -114,28 +114,26 @@ export default function Logic() {
 
   const [marketsDetails, setMarketsDetails] = useState([]);
   const getMarketDetails = () => {
-    let results = [];
     markets.map((m) => {
       let details = fetch(
         `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=${m.id}`
       )
         .then((resp) => resp.json())
         .then((data) => {
-          const deets = data.marketdetails;
-          results.push({ ...m, deets });
+          const completeMarket = { ...m, ...data.marketdetails };
+          setMarketsDetails((oldArray) => [...oldArray, completeMarket]);
         })
         .catch((err) => {
           console.log("Error:", err);
         });
       return details;
     });
-    setMarketsDetails(results);
   };
 
   useEffect(() => {
     getMarkets();
     getCity();
-    // getTemp(); too many calls to API, on time out :)
+    // getTemp(); dont want to hit limit
   }, [currentLocation]);
 
   useEffect(() => {
