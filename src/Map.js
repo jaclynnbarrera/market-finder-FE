@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import MarketInfo from "./MarketInfo";
 
@@ -11,11 +11,13 @@ function Map(props) {
   const [selected, setSelected] = useState(false);
 
   const onSelect = (market) => {
-    setSelected(market);
+    console.log(market);
+
+    // setSelected(market);
   };
 
   const handleClose = () => {
-    setSelected(false);
+    // setSelected(false);
   };
 
   const houseIcon = "http://maps.google.com/mapfiles/kml/pal2/icon10.png";
@@ -29,17 +31,11 @@ function Map(props) {
           center={props.location}
         >
           <Marker key={"location"} position={props.location} icon={houseIcon} />
-          {/* {props.markers !== false
-            ? props.markers.map((item, i) => {
-                return (
-                  <Marker
-                    key={i}
-                    position={item}
-                    onClick={() => onSelect(item)}
-                  />
-                );
-              })
-            : null} */}
+
+          {/* {props.markets &&
+            props.markets.map((m) => {
+              <Marker key={m.id} position={m} onClick={() => onSelect(m)} />;
+            })} */}
 
           {selected !== false ? (
             <MarketInfo

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import MarketInfo from "./MarketInfo";
 
 export default function MarketCard(props) {
+  // debugger;
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {

@@ -156,9 +156,9 @@ export default function Logic() {
       <Map
         location={currentLocation}
         clicked={buttonClicked}
-        details={marketsDetails}
+        markets={marketsDetails}
       />
-      <RightBar markets={markets} details={marketsDetails} />
+      <RightBar markets={marketsDetails} />
     </div>
   );
 }
