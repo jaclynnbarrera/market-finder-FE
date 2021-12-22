@@ -5,6 +5,7 @@ import { createApi } from "unsplash-js";
 import { useEffect, useState } from "react";
 
 export default function RightBar(props) {
+  //refactor API call in seperate file
   const unsplash = createApi({
     accessKey: process.env.REACT_APP_UNSPLASH_KEY,
   });
@@ -15,7 +16,7 @@ export default function RightBar(props) {
       .getPhotos({
         query: "farmers markets",
         page: 1,
-        perPage: 20,
+        perPage: 30,
         orientation: "portrait",
       })
       .then((result) => {
