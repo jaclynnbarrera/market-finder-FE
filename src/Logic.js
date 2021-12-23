@@ -112,7 +112,6 @@ export default function Logic() {
 
   const [marketsDetails, setMarketsDetails] = useState([]);
 
-  const [complete, setComplete] = useState(false);
   const getMarketDetails = () => {
     if (markets) {
       markets.map((m) => {
@@ -146,6 +145,30 @@ export default function Logic() {
     setInterval(getTime, 1000);
   });
 
+  const [markers, setMarkers] = useState([]);
+  const getCoords = (m) => {
+    Geocode.setApiKey(process.env.REACT_APP_GEOCODE_KEY);
+    Geocode.fromAddress(m.Address).then(
+      (response) => {
+        const { lat, lng } = response.results[0].geometry.location;
+        const coords = {
+          lat: lat,
+          lng: lng,
+        };
+        setMarkers((oldArray) => [
+          ...oldArray,
+          {
+            coords: coords,
+            market: m,
+          },
+        ]);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  };
+
   return (
     <div className="parent">
       <LeftNav />
@@ -158,9 +181,9 @@ export default function Logic() {
       <Map
         location={currentLocation}
         clicked={buttonClicked}
-        markets={marketsDetails}
+        markers={markers}
       />
-      <RightBar markets={marketsDetails} />
+      <RightBar markets={marketsDetails} func={getCoords} />
     </div>
   );
 }

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import MarketInfo from "./MarketInfo";
 
 export default function MarketCard(props) {
-  // debugger;
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
@@ -17,7 +16,7 @@ export default function MarketCard(props) {
   };
 
   useEffect(() => {
-    console.log(props.market);
+    props.func(props.market);
   }, [props.market]);
 
   return (

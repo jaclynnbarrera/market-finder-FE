@@ -34,6 +34,7 @@ export default function RightBar(props) {
           market={market}
           key={i}
           photo={photos.length !== 0 ? photos[i] : undefined}
+          func={props.func}
         />
       ))}
     </div>

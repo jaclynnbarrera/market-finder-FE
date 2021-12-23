@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import { Geocode } from "react-geocode";
 import MarketInfo from "./MarketInfo";
 
 function Map(props) {
@@ -34,10 +33,14 @@ function Map(props) {
         >
           <Marker key={"location"} position={props.location} icon={houseIcon} />
 
-          {/* {props.markets &&
-            props.markets.map((m) => {
-              <Marker key={m.id} position={m} onClick={() => onSelect(m)} />;
-            })} */}
+          {props.markers &&
+            props.markers.map((m) => (
+              <Marker
+                key={m.id}
+                position={m.coords}
+                onClick={() => onSelect(m)}
+              />
+            ))}
 
           {selected !== false ? (
             <MarketInfo
