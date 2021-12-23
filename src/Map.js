@@ -8,6 +8,8 @@ function Map(props) {
     width: "100%",
   };
 
+  const defaultCoords = { lat: 39.8097343, lng: -98.5556199 };
+
   const [selected, setSelected] = useState(false);
 
   const onSelect = (market) => {
@@ -28,7 +30,7 @@ function Map(props) {
         <GoogleMap
           mapContainerStyle={mapStyles}
           zoom={props.clicked === false ? 4 : 11}
-          center={props.location}
+          center={props.location ? props.location : defaultCoords}
         >
           <Marker key={"location"} position={props.location} icon={houseIcon} />
 
