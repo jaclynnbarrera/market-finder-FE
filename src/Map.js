@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { Geocode } from "react-geocode";
 import MarketInfo from "./MarketInfo";
 
 function Map(props) {
@@ -14,7 +15,6 @@ function Map(props) {
 
   const onSelect = (market) => {
     console.log(market);
-
     // setSelected(market);
   };
 
@@ -29,7 +29,7 @@ function Map(props) {
       <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLEMAPS_KEY}>
         <GoogleMap
           mapContainerStyle={mapStyles}
-          zoom={props.clicked === false ? 4 : 11}
+          zoom={props.clicked === false ? 4 : 12}
           center={props.location ? props.location : defaultCoords}
         >
           <Marker key={"location"} position={props.location} icon={houseIcon} />

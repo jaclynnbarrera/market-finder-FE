@@ -1,5 +1,5 @@
 import "../src/styling/MarketCard.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MarketInfo from "./MarketInfo";
 
 export default function MarketCard(props) {
@@ -16,6 +16,10 @@ export default function MarketCard(props) {
     setClicked(false);
   };
 
+  useEffect(() => {
+    console.log(props.market);
+  }, [props.market]);
+
   return (
     <div className="marketcard" key={props.market.marketname}>
       <div className="float-child">
@@ -23,7 +27,7 @@ export default function MarketCard(props) {
         <p>{props.market.marketname.slice(0, 4)} Miles Away</p>
         <p
           onClick={() => {
-            console.log(props);
+            console.log(props.market);
           }}
         >
           See Market Info <i class="arrow right"></i>

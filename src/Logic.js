@@ -3,6 +3,7 @@ import LeftNav from "./LeftNav";
 import TopBar from "./TopBar";
 import Map from "./Map";
 import RightBar from "./RightBar";
+import Geocode from "react-geocode";
 
 export default function Logic() {
   const [currentLocation, setCurrentLocation] = useState(false);
@@ -93,7 +94,7 @@ export default function Logic() {
 
   setInterval(getTime, 1000);
 
-  const [markets, setMarketResults] = useState([]);
+  const [markets, setMarketResults] = useState(false);
 
   const getMarkets = () => {
     let results = fetch(
@@ -110,27 +111,31 @@ export default function Logic() {
   };
 
   const [marketsDetails, setMarketsDetails] = useState([]);
+
+  const [complete, setComplete] = useState(false);
   const getMarketDetails = () => {
-    markets.map((m) => {
-      let details = fetch(
-        `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=${m.id}`
-      )
-        .then((resp) => resp.json())
-        .then((data) => {
-          const completeMarket = { ...m, ...data.marketdetails };
-          setMarketsDetails((oldArray) => [...oldArray, completeMarket]);
-        })
-        .catch((err) => {
-          console.log("Error:", err);
-        });
-      return details;
-    });
+    if (markets) {
+      markets.map((m) => {
+        let details = fetch(
+          `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=${m.id}`
+        )
+          .then((resp) => resp.json())
+          .then((data) => {
+            const completeMarket = { ...m, ...data.marketdetails };
+            setMarketsDetails((oldArray) => [...oldArray, completeMarket]);
+          })
+          .catch((err) => {
+            console.log("Error:", err);
+          });
+        // return details;
+      });
+    }
   };
 
   useEffect(() => {
     getMarkets();
     getCity();
-    // getTemp(); dont want to hit limit
+    // getTemp(); dont want to hit limit :)
   }, [currentLocation]);
 
   useEffect(() => {
