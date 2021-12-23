@@ -12,8 +12,9 @@ function Map(props) {
 
   const [selected, setSelected] = useState(false);
 
-  const onSelect = (market) => {
-    console.log(market);
+  const onSelect = (m) => {
+    console.log("clicked market from map");
+    console.log(m.market);
     // setSelected(market);
   };
 

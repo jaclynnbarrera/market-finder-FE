@@ -26,6 +26,7 @@ export default function MarketCard(props) {
         <p>{props.market.marketname.slice(0, 4)} Miles Away</p>
         <p
           onClick={() => {
+            console.log("clickedmarketfrommarketcard");
             console.log(props.market);
           }}
         >
