@@ -6,13 +6,8 @@ export default function MarketCard(props) {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
-    //pop up
-    setClicked(true);
-  };
-
-  const handleClose = () => {
-    //close pop up
-    setClicked(false);
+    console.log("market card clicked");
+    setClicked(!clicked);
   };
 
   useEffect(() => {
@@ -20,16 +15,15 @@ export default function MarketCard(props) {
   }, [props.market]);
 
   return (
-    <div className="marketcard" key={props.market.marketname}>
+    <div
+      className="marketcard"
+      key={props.market.marketname}
+      onClick={handleClick}
+    >
       <div className="float-child">
         <h3>{props.market.marketname.slice(4)}</h3>
         <p>{props.market.marketname.slice(0, 4)} Miles Away</p>
-        <p
-          onClick={() => {
-            console.log("clickedmarketfrommarketcard");
-            console.log(props.market);
-          }}
-        >
+        <p>
           See Market Info <i class="arrow right"></i>
         </p>
       </div>
@@ -42,14 +36,7 @@ export default function MarketCard(props) {
           }
         />
       </div>
-      {/* {clicked === true ? (
-          <MarketInfo
-            details={details}
-            name={props.market.marketname}
-            func={handleClose}
-            open={clicked}
-          />
-        ) : null} */}
+      {clicked ? <MarketInfo market={props.market} /> : null}
     </div>
   );
 }
