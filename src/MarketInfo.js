@@ -11,7 +11,7 @@ export default function MarketInfo(props) {
         <span className="close-icon" onClick={onClose}>
           x
         </span>
-        <p>I'm A Pop Up!!!</p>
+        <p>{props.market.marketname}</p>
       </div>
     </div>
   );

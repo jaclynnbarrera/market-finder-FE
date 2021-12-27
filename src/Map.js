@@ -15,12 +15,11 @@ function Map(props) {
   const [selectedMarket, setSelectedMarket] = useState({});
 
   const onOpen = (m) => {
-    setSelectedMarket(m);
+    setSelectedMarket(m.market);
     setSelected(true);
   };
 
   const onClose = () => {
-    setSelectedMarket({});
     setSelected(false);
   };
 
@@ -42,9 +41,7 @@ function Map(props) {
                 key={m.id}
                 position={m.coords}
                 icon={greenMarker}
-                onClick={() => {
-                  onOpen(m);
-                }}
+                onClick={() => onOpen(m)}
               />
             ))}
 
