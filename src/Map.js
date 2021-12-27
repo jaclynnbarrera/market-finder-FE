@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import MarketInfo from "./MarketInfo";
+import greenMarker from "../src/icons/darkgreen_MarkerM.png";
 
 function Map(props) {
   const mapStyles = {
@@ -39,6 +40,7 @@ function Map(props) {
               <Marker
                 key={m.id}
                 position={m.coords}
+                icon={greenMarker}
                 onClick={() => onSelect(m)}
               />
             ))}
