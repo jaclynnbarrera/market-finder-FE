@@ -6,7 +6,6 @@ export default function MarketCard(props) {
   const [clicked, setClicked] = useState(false);
 
   const handleToggle = () => {
-    console.log("market card clicked");
     setClicked(!clicked);
   };
 

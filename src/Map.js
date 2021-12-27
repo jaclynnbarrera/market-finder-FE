@@ -12,15 +12,16 @@ function Map(props) {
   const defaultCoords = { lat: 39.8097343, lng: -98.5556199 };
 
   const [selected, setSelected] = useState(false);
+  const [selectedMarket, setSelectedMarket] = useState({});
 
-  const onSelect = (m) => {
-    console.log("clicked market from map");
-    console.log(m.market);
-    // setSelected(market);
+  const onOpen = (m) => {
+    setSelectedMarket(m);
+    setSelected(true);
   };
 
-  const handleClose = () => {
-    // setSelected(false);
+  const onClose = () => {
+    setSelectedMarket({});
+    setSelected(false);
   };
 
   const houseIcon = "http://maps.google.com/mapfiles/kml/pal2/icon10.png";
@@ -41,17 +42,14 @@ function Map(props) {
                 key={m.id}
                 position={m.coords}
                 icon={greenMarker}
-                onClick={() => onSelect(m)}
+                onClick={() => {
+                  onOpen(m);
+                }}
               />
             ))}
 
-          {selected !== false ? (
-            <MarketInfo
-              details={selected.details}
-              name={selected.name}
-              func={handleClose}
-              open={true}
-            />
+          {selected ? (
+            <MarketInfo market={selectedMarket} toggle={onClose} />
           ) : null}
         </GoogleMap>
       </LoadScript>
