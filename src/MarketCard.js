@@ -5,7 +5,7 @@ import MarketInfo from "./MarketInfo";
 export default function MarketCard(props) {
   const [clicked, setClicked] = useState(false);
 
-  const handleToggle = () => {
+  const toggle = () => {
     setClicked(!clicked);
   };
 
@@ -14,11 +14,7 @@ export default function MarketCard(props) {
   }, [props.market]);
 
   return (
-    <div
-      className="marketcard"
-      key={props.market.marketname}
-      onClick={handleToggle}
-    >
+    <div className="marketcard" key={props.market.marketname} onClick={toggle}>
       <div className="float-child">
         <h3>{props.market.marketname.slice(4)}</h3>
         <p>{props.market.marketname.slice(0, 4)} Miles Away</p>
@@ -35,7 +31,7 @@ export default function MarketCard(props) {
           }
         />
       </div>
-      {clicked ? <MarketInfo market={props.market} /> : null}
+      {clicked ? <MarketInfo market={props.market} toggle={toggle} /> : null}
     </div>
   );
 }
