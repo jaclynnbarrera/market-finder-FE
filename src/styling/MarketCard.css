@@ -4,6 +4,12 @@
   border: 1px solid black;
   border-radius: 10px;
   margin: 2px;
+  cursor: pointer;
+}
+
+.marketcard:hover {
+  border: 2px solid #588157;
+  background-color: rgb(88, 129, 87, 0.2);
 }
 
 .float-child {
