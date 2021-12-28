@@ -7,8 +7,8 @@ export default function MarketInfo(props) {
   };
 
   return (
-    <div className="modal">
-      <div className="modal_content">
+    <div className="popup-box">
+      <div className="box">
         <span className="close-icon" onClick={onClose}>
           x
         </span>
