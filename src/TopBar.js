@@ -1,16 +1,19 @@
 import "../src/styling/TopBar.css";
-import React from "react";
+import React, { useState } from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 function TopBar(props) {
+  const [input, setInput] = useState("");
+
   const handleSubmit = () => {
-    console.log("submitted");
+    //use submit to call API using zip
+    console.log(input);
   };
 
-  const handleChange = () => {
-    console.log("changed");
+  const handleChange = (e) => {
+    setInput(e.target.value);
   };
 
   return (
@@ -23,7 +26,7 @@ function TopBar(props) {
           <input
             className="zip"
             type="text"
-            onChance={handleChange}
+            onChange={handleChange.bind(this)}
             placeholder="Set Your Zip Code"
           />
         </form>
