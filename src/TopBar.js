@@ -8,17 +8,19 @@ function TopBar(props) {
   const [input, setInput] = useState("");
 
   const handleSubmit = () => {
-    //use submit to call API using zip
-    console.log(input);
+    //parent function to handle zip api call
+    //check for full 5 zip
+    props.zipfunc(input);
   };
 
   const handleChange = (e) => {
+    //check for only positive integers, no decimals or alphabet
     setInput(e.target.value);
   };
 
   return (
     <div className="topbar">
-      <button className="button" onClick={props.func}>
+      <button className="button" onClick={props.coordsfunc}>
         <p>Use Current Location</p>
       </button>
       <div>

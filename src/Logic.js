@@ -10,6 +10,10 @@ export default function Logic() {
 
   const [buttonClicked, setButtonClicked] = useState(false);
 
+  const handleZip = (input) => {
+    setCurrentLocation({ zip: parseInt(input) });
+  };
+
   const handleClick = () => {
     !navigator.geolocation
       ? alert("Your browser doesn't support Geolocation")
@@ -21,7 +25,7 @@ export default function Logic() {
       lat: position.coords.latitude,
       lng: position.coords.longitude,
     };
-    setCurrentLocation(current);
+    setCurrentLocation({ coords: current });
     setButtonClicked(true);
   };
 
@@ -30,36 +34,39 @@ export default function Logic() {
   const [cityState, setCityState] = useState({});
 
   const getCity = () => {
-    const xhr = new XMLHttpRequest();
-    const lat = currentLocation.lat;
-    const lng = currentLocation.lng;
+    if (currentLocation.coords) {
+      const xhr = new XMLHttpRequest();
+      const lat = currentLocation.coords.lat;
+      const lng = currentLocation.coords.lng;
 
-    xhr.open(
-      "GET",
-      "https://us1.locationiq.com/v1/reverse.php?key=pk.05b5e7b1813b2629d04a1bb38e785688&lat=" +
-        lat +
-        "&lon=" +
-        lng +
-        "&format=json",
-      true
-    );
+      xhr.open(
+        "GET",
+        "https://us1.locationiq.com/v1/reverse.php?key=pk.05b5e7b1813b2629d04a1bb38e785688&lat=" +
+          lat +
+          "&lon=" +
+          lng +
+          "&format=json",
+        true
+      );
 
-    const processRequest = (e) => {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        const response = JSON.parse(xhr.responseText);
-        const city = response.address.city;
-        const state = response.address.state;
-        const cityState = {
-          city: city,
-          state: state,
-        };
-        setCityState(cityState);
-        return;
-      }
-    };
-    xhr.send();
-    xhr.onreadystatechange = processRequest;
-    xhr.addEventListener("readystatechange", processRequest, false);
+      const processRequest = (e) => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          const response = JSON.parse(xhr.responseText);
+          const city = response.address.city;
+          const state = response.address.state;
+          const cityState = {
+            city: city,
+            state: state,
+          };
+          setCityState(cityState);
+          return;
+        }
+      };
+      xhr.send();
+      xhr.onreadystatechange = processRequest;
+      xhr.addEventListener("readystatechange", processRequest, false);
+    }
+    //coords or zip?
   };
 
   const [temp, setTemp] = useState(40);
@@ -97,17 +104,32 @@ export default function Logic() {
   const [markets, setMarketResults] = useState(false);
 
   const getMarkets = () => {
-    let results = fetch(
-      `http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=${currentLocation.lat}&lng=${currentLocation.lng}`
-    )
-      .then((resp) => resp.json())
-      .then((data) => {
-        setMarketResults(data.results);
-      })
-      .catch((err) => {
-        console.log("Error:", err);
-      });
-    return results;
+    if (currentLocation.coords) {
+      let results = fetch(
+        `https://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=${currentLocation.coords.lat}&lng=${currentLocation.coords.lng}`
+      )
+        .then((resp) => resp.json())
+        .then((data) => {
+          setMarketResults(data.results);
+        })
+        .catch((err) => {
+          console.log("Error:", err);
+        });
+      return results;
+    } else if (currentLocation.zip) {
+      debugger;
+      let results = fetch(
+        `https://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=${currentLocation.zip}`
+      )
+        .then((resp) => resp.json())
+        .then((data) => {
+          setMarketResults(data.results);
+        })
+        .catch((err) => {
+          console.log("Error:", err);
+        });
+      return results;
+    }
   };
 
   const [marketsDetails, setMarketsDetails] = useState([]);
@@ -126,24 +148,10 @@ export default function Logic() {
           .catch((err) => {
             console.log("Error:", err);
           });
-        // return details;
+        return details;
       });
     }
   };
-
-  useEffect(() => {
-    getMarkets();
-    getCity();
-    // getTemp(); dont want to hit limit :)
-  }, [currentLocation]);
-
-  useEffect(() => {
-    getMarketDetails();
-  }, [markets]);
-
-  useEffect(() => {
-    setInterval(getTime, 1000);
-  });
 
   const [markers, setMarkers] = useState([]);
   const getCoords = (m) => {
@@ -169,17 +177,32 @@ export default function Logic() {
     );
   };
 
+  useEffect(() => {
+    getMarkets();
+    getCity();
+    // getTemp(); dont want to hit limit :)
+  }, [currentLocation]);
+
+  useEffect(() => {
+    getMarketDetails();
+  }, [markets]);
+
+  useEffect(() => {
+    setInterval(getTime, 1000);
+  });
+
   return (
     <div className="parent">
       <LeftNav />
       <TopBar
-        func={handleClick}
+        coordsfunc={handleClick}
+        zipfunc={handleZip}
         cityState={cityState}
         temp={temp}
         time={time}
       />
       <Map
-        location={currentLocation}
+        location={currentLocation.coords}
         clicked={buttonClicked}
         markers={markers}
       />
