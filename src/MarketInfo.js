@@ -13,9 +13,9 @@ export default function MarketInfo(props) {
           x
         </span>
         <h3>{props.market.marketname.slice(4)}</h3>
-        <p>{props.market.Address}</p>
-        <p>{props.market.Products}</p>
-        <p>{props.market.Schedule}</p>
+        <p>Address: {props.market.Address}</p>
+        <p>Products: {props.market.Products}</p>
+        <p>Schedule: {props.market.Schedule.slice(0, -16)}</p>
       </div>
     </div>
   );

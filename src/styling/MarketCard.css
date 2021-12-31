@@ -9,7 +9,7 @@
 
 .marketcard:hover {
   border: 2px solid #588157;
-  background-color: rgb(88, 129, 87, 0.2);
+  background-color: rgb(88, 129, 87, 0.1);
 }
 
 .float-child {
